@@ -1,0 +1,35 @@
+{
+  "tables": [
+    {
+      "table": "Trips",
+      "description": "Trip fact table for ride orders and their completion or cancellation status by request day.",
+      "columns": [
+        {"name": "id", "description": "Trip identifier"},
+        {"name": "client_id", "description": "Passenger user id"},
+        {"name": "driver_id", "description": "Driver user id"},
+        {"name": "city_id", "description": "City identifier"},
+        {"name": "status", "description": "Trip status such as completed, cancelled_by_driver, cancelled_by_client"},
+        {"name": "request_at", "description": "Trip request date"}
+      ],
+      "metrics": [
+        {"name": "cancellation rate", "description": "Cancelled trips divided by total valid trips"}
+      ],
+      "relationships": [
+        {"to_table": "Users", "description": "Join client_id and driver_id to users_id"}
+      ]
+    },
+    {
+      "table": "Users",
+      "description": "User dimension with banned flag and role information.",
+      "columns": [
+        {"name": "users_id", "description": "User identifier"},
+        {"name": "banned", "description": "Whether the user is banned"},
+        {"name": "role", "description": "Whether the user is a client or driver"}
+      ],
+      "metrics": [],
+      "relationships": [
+        {"to_table": "Trips", "description": "Trips join on client_id and driver_id"}
+      ]
+    }
+  ]
+}
