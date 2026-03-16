@@ -124,14 +124,9 @@ result = run_question(
 - 可选的检索后端状态 `retrieval_backend`
 - SQL 执行结果或错误信息
 
-## 调试脚本
-
-- `scripts/inspect_subscription_columns.py`
-
-该脚本仅用于本地快速检查数据库里 `subscription_events` 表的列注释，不属于主运行链路。
 
 ## 当前限制
 
 - 入口仍然偏 demo，缺少独立的应用服务层
 - 向量检索初始化失败时当前仍会静默降级，需要后续补日志或错误透出
-- 仓库尚未附带最终许可证文件，公开发布前建议补齐
+
